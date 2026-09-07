@@ -12,4 +12,23 @@ export class ShoppingPage {
         await addToCartButton.click();
     }
 
+    async sortProductsByPriceAsc() {
+        await this.page.getByTestId('sort-select').selectOption('price-asc')
+    }
+
+    async getProductsByPrice() {
+        const productPrices = this.page.getByTestId(/product-price-/);
+        const priceTexts = productPrices.allTextContents();
+        return priceTexts;
+    }
+
+    async getProductsByName() {
+        const productNames = this.page.getByTestId(/product-name-/);
+        const nameTexts = productNames.allTextContents();
+        return nameTexts;
+    }   
+
+    async sortProductsByNameAsc() {
+        await this.page.getByTestId('sort-select').selectOption('name-asc')
+    }
 }
