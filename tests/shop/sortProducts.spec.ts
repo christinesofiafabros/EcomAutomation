@@ -8,7 +8,7 @@ let shoppingPage: ShoppingPage;
 let loginPage: LoginPage;
 let categoryPage: CategoryPage;
 
-async function loginAndSelectCategory(page: Page) {
+export async function loginAndSelectCategory(page: Page) {
     
     const shoppingPage = new ShoppingPage(page);
     const loginPage = new LoginPage(page);

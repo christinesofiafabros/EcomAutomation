@@ -1,0 +1,6 @@
+export const Filter = {
+    item: {
+        filterType: 'Mobile',
+        filterBrand: 'Samsung'
+    }
+}
