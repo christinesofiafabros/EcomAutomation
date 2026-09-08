@@ -16,6 +16,18 @@ export class ShoppingPage {
         await this.page.getByTestId('sort-select').selectOption('price-asc')
     }
 
+    async sortProductsByNameAsc() {
+        await this.page.getByTestId('sort-select').selectOption('name-asc')
+    }
+
+    async sortProductsByPriceDesc() {
+        await this.page.getByTestId('sort-select').selectOption('price-desc')
+    }
+
+    async sortProductsByNameDesc() {
+        await this.page.getByTestId('sort-select').selectOption('name-desc')
+    }
+
     async getProductsByPrice() {
         const productPrices = this.page.getByTestId(/product-price-/);
         const priceTexts = productPrices.allTextContents();
@@ -31,8 +43,4 @@ export class ShoppingPage {
         const nameTexts = productNames.allTextContents();
         return nameTexts;
     }   
-
-    async filterByType(type: string) {
-        await this.page.getByText(`${type}`).click();
-    }
 }

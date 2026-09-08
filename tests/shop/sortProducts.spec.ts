@@ -38,6 +38,23 @@ test('products are sorted by price in ascending order', async ({ page }) => {
     expect(isAscending).toBe(true);
 })
 
+test('products are sorted by price in descending order', async ({ page }) => {
+    const { shoppingPage } = await loginAndSelectCategory(page);
+
+    await shoppingPage.sortProductsByPriceDesc();
+
+    const productPrices = await shoppingPage.getProductsByPrice();
+
+    const prices = productPrices.map((text) =>
+        Number(text.replace('$', '').trim())
+     );
+
+    const isDescending = prices.every(
+        (price, index) => index === 0 || prices[index - 1] >= price
+    );
+
+    expect(isDescending).toBe(true);
+})
 
 test('products are sorted by name in ascending order', async ({ page }) => {
     const { shoppingPage } = await loginAndSelectCategory(page);
@@ -51,5 +68,20 @@ test('products are sorted by name in ascending order', async ({ page }) => {
     );
 
     expect(isAscending).toBe(true);
+
+})
+
+test('products are sorted by name in descending order', async ({ page }) => {
+    const { shoppingPage } = await loginAndSelectCategory(page);
+
+    await shoppingPage.sortProductsByNameDesc();
+
+    const productNames = await shoppingPage.getProductsByName();
+
+    const isDescending = productNames.every(
+        (name, index) => index === 0 || productNames[index - 1].localeCompare(name) >= 0
+    );
+
+    expect(isDescending).toBe(true);
 
 });
