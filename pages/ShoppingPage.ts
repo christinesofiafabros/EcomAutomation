@@ -34,10 +34,6 @@ export class ShoppingPage {
         return priceTexts;
     }
 
-    async sortProductsByNameAsc() {
-        await this.page.getByTestId('sort-select').selectOption('name-asc')
-    }
-
     async getProductsByName() {
         const productNames = this.page.getByTestId(/product-name-/);
         const nameTexts = productNames.allTextContents();
