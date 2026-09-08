@@ -71,7 +71,7 @@ test('products are sorted by name in ascending order', async ({ page }) => {
 
 })
 
-test('products are sorted by name in desccending order', async ({ page }) => {
+test('products are sorted by name in descending order', async ({ page }) => {
     const { shoppingPage } = await loginAndSelectCategory(page);
 
     await shoppingPage.sortProductsByNameDesc();
