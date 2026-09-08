@@ -38,3 +38,4 @@ export class CartPage {
     async removeItemFromCart(productId: number) {
         await this.page.getByTestId(`cart-remove-${productId}`).click();
     }
+}

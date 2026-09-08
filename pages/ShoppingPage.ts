@@ -39,4 +39,16 @@ export class ShoppingPage {
         const nameTexts = productNames.allTextContents();
         return nameTexts;
     }   
+
+    async filterProductsByType(...types: string[]) {
+        for (const type of types) {
+            await this.page.getByRole('checkbox', { name: `${type}` }).check();
+        }
+    }
+
+    async getProductsByType() {
+        const productTypes = this.page.getByTestId(/product-category-/);
+        const typeTexts = productTypes.allTextContents();
+        return typeTexts;
+    }
 }
